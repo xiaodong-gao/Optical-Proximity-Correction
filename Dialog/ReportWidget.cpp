@@ -177,7 +177,7 @@ void ReportWidget::export_pdf_file(){
                 export_pdf_->savePDF(fileName.toStdString());
                 //export_pdf_->drawImage(work_done_result_.src_mat1,)
                 //work_done_result_.src_mat1
-                //qDebug() << "Selected file:" << fileName;
+                ////qDebug() << "Selected file:" << fileName;
                 // 这里可以添加保存文件的逻辑
             }
     }

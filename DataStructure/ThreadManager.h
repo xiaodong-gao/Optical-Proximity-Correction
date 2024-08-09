@@ -12,7 +12,6 @@ class ThreadManager : public QThread{
 public:
     explicit ThreadManager(QObject *parent = nullptr);
     ~ThreadManager();
-
     ThreadManager(const ThreadManager & rhs) = delete;
     ThreadManager& operator=(const ThreadManager & rhs) = delete;
 

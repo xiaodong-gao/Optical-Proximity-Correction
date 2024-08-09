@@ -23,7 +23,7 @@ CameraStatusCode MCameraHik::init(void *ptr ,int nIndex) {
     int nRet = MV_CC_CreateHandle(&handle, stDeviceList->pDeviceInfo[nIndex]);
     if (MV_OK != nRet)
     {
-        //qDebug() << "Create Handle fail!" << "\n";
+        ////qDebug() << "Create Handle fail!" << "\n";
         //printf("Create Handle fail! nRet [0x%x]\n", nRet);
         //break;
     }
@@ -35,7 +35,7 @@ CameraStatusCode MCameraHik::open() {
     int nRet = MV_CC_OpenDevice(handle);
     if (MV_OK != nRet)
     {
-        //qDebug() << "Open Device fail!" << "\n";
+        ////qDebug() << "Open Device fail!" << "\n";
         //printf("Open Device fail! nRet [0x%x]\n", nRet);
         //break;
     }
@@ -49,7 +49,7 @@ CameraStatusCode MCameraHik::open() {
             nRet = MV_CC_SetIntValueEx(handle,"GevSCPSPacketSize",nPacketSize);
             if(nRet != MV_OK)
             {
-                //qDebug() << "Warning: Set Packet Size fail!" << "\n";
+                ////qDebug() << "Warning: Set Packet Size fail!" << "\n";
                 //printf("Warning: Set Packet Size fail nRet [0x%x]!", nRet);
             }
         }
@@ -75,7 +75,7 @@ CameraStatusCode MCameraHik::close(){
     int nRet = MV_CC_CloseDevice(handle);
     if (MV_OK != nRet)
     {
-        //qDebug() << "ClosDevice fail!" << "\n";
+        ////qDebug() << "ClosDevice fail!" << "\n";
         //printf("ClosDevice fail! nRet [0x%x]\n", nRet);
         //break;
     }
@@ -88,7 +88,7 @@ CameraStatusCode MCameraHik::grab(){
     int nRet = MV_CC_StartGrabbing(handle);
     if (MV_OK != nRet)
     {
-        //qDebug() << "Start Grabbing fail!" << "\n";
+        ////qDebug() << "Start Grabbing fail!" << "\n";
         //printf("Start Grabbing fail! nRet [0x%x]\n", nRet);
         //break;
     }

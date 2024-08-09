@@ -29,6 +29,13 @@ typedef struct WorkDoneResult {
     double ssim_value{0.0};
 }WorkDoneResult;
 
+enum class CameraType {
+    FRONT_CAMERA,
+    BACK_CAMERA,
+    LEFT_CAMERA,
+    RIGHT_CAMERA
+};
+
 typedef struct RecipeParam{
     cv::Mat src_mat1_{};
     cv::Mat src_mat2_{};

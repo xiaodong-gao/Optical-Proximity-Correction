@@ -1,8 +1,9 @@
 #ifndef MCAMERAHIKFACTORY_H
 #define MCAMERAHIKFACTORY_H
 
-#include "DataStructure/MCameraFactory.h"
-#include "DataStructure/MCameraHik.h"
+#include <QDebug>
+#include "DataStructure/Camera/MCameraFactory.h"
+#include "DataStructure/Camera/MCameraHik.h"
 
 class MCameraHikFactory : public MCameraFactory{
 public:

@@ -40,10 +40,10 @@ win32 {
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    DataStructure/MCameraBase.cpp \
-    DataStructure/MCameraFactory.cpp \
-    DataStructure/MCameraHik.cpp \
-    DataStructure/MCameraHikFactory.cpp \
+    DataStructure/Camera/MCameraBase.cpp \
+    DataStructure/Camera/MCameraFactory.cpp \
+    DataStructure/Camera/MCameraHik.cpp \
+    DataStructure/Camera/MCameraHikFactory.cpp \
     DataStructure/MImageProcess.cpp \
     DataStructure/MSystemInfo.cpp \
     DataStructure/ThreadManager.cpp \
@@ -51,17 +51,16 @@ SOURCES += \
     Dialog/ConfigurationWidget.cpp \
     Dialog/ImageProcessWidget.cpp \
     Dialog/ReportWidget.cpp \
-    OpticalToolDlg.cpp \
+    Dialog/mainwindow.cpp \
     ROILabel.cpp \
     ZoomableLabel.cpp \
-    main.cpp \
-    mainwindow.cpp
+    main.cpp
 
 HEADERS += \
-    DataStructure/MCameraBase.h \
-    DataStructure/MCameraFactory.h \
-    DataStructure/MCameraHik.h \
-    DataStructure/MCameraHikFactory.h \
+    DataStructure/Camera/MCameraBase.h \
+    DataStructure/Camera/MCameraFactory.h \
+    DataStructure/Camera/MCameraHik.h \
+    DataStructure/Camera/MCameraHikFactory.h \
     DataStructure/MCommonBase.h \
     DataStructure/MImageProcess.h \
     DataStructure/MSystemInfo.h \
@@ -70,17 +69,16 @@ HEADERS += \
     Dialog/ConfigurationWidget.h \
     Dialog/ImageProcessWidget.h \
     Dialog/ReportWidget.h \
-    OpticalToolDlg.h \
+    Dialog/mainwindow.h \
     ROILabel.h \
-    ZoomableLabel.h \
-    mainwindow.h
+    ZoomableLabel.h
+
 
 FORMS += \
     Dialog/configurationwidget.ui \
     Dialog/imageprocesswidget.ui \
     Dialog/reportwidget.ui \
-    opticaltooldlg.ui \
-    mainwindow.ui
+    Dialog/mainwindow.ui
 
 
 # Default rules for deployment.

@@ -26,6 +26,8 @@ void MSystemInfo::init(){
 }
 
 void MSystemInfo::open(){
+
+    //qDebug() << "11";
     camera_factory_->open();
 }
 

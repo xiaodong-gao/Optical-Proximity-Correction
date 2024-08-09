@@ -1,7 +1,7 @@
 #ifndef MCAMERAHIK_H
 #define MCAMERAHIK_H
 
-#include "DataStructure/MCameraBase.h"
+#include "DataStructure/Camera/MCameraBase.h"
 #include "MvCameraControl.h"
 
 class MCameraHik : public MCameraBase{

@@ -109,6 +109,8 @@ CameraStatusCode MCameraHikFactory::init(){
 }
 
 CameraStatusCode MCameraHikFactory::open() {
+
+    qDebug() << "112" ;
     for (int i = 0; i < vec_cameras_.size(); i++) {
         vec_cameras_[i]->open();
     }

@@ -16,7 +16,7 @@ void ThreadManager::start() {
     if (!m_running.load()) {
         m_stop.store(false);
         QThread::start();
-        //qDebug() << "Thread start...\n";
+        ////qDebug() << "Thread start...\n";
     }
 }
 
@@ -24,7 +24,7 @@ void ThreadManager::stop() {
     if (m_running.load()) {
         m_stop.store(true);
     }
-    //qDebug() << "Thread stop...\n";
+    ////qDebug() << "Thread stop...\n";
 }
 
 bool ThreadManager::isRunning() const {

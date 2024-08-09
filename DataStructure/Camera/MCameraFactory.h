@@ -2,7 +2,7 @@
 #define MCAMERAFACTORY_H
 
 #include "DataStructure/MCommonBase.h"
-#include "DataStructure/MCameraBase.h"
+#include "DataStructure/Camera/MCameraBase.h"
 #include <vector>
 #include <memory>
 #include <QString>
