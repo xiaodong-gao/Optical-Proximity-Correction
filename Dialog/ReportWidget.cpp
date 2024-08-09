@@ -15,10 +15,7 @@ ReportWidget::ReportWidget(QWidget *parent) :
     controls.push_back(ui->labelFocusImage2);
     controls.push_back(ui->labelQualityImage1);
     controls.push_back(ui->labelQualityImage2);
-
-
-
-
+    controls.push_back(ui->btnExportPDF);
     image_process_ = std::make_unique<MImageProcess>();
     export_pdf_ = std::make_unique<MExportPDF>();
     connect(ui->btnExportPDF, &QPushButton::clicked, this, &ReportWidget::export_pdf_file);
@@ -32,7 +29,6 @@ ReportWidget::~ReportWidget()
 void ReportWidget::show_result(QLabel *label, cv::Mat image){
     QImage q_image = image_process_->Mat2QImage(image);
     QPixmap q_pixmap = QPixmap::fromImage(q_image).scaled(label->size());
-
     QList<QWidget*> controls_ = controls;
     for (int i = 0; i < controls_.size(); ++i) {
         if (controls_[i] == label) {
@@ -58,17 +54,24 @@ void ReportWidget::set_work_done_result(const WorkDoneResult &work_done_result){
    show_result(ui->labelCoarseImage1, work_done_result.coarse_mat1);
    show_result(ui->labelCoarseImage2, work_done_result.coarse_mat2);
 
-   show_result(ui->labelFocusImage1, work_done_result.focus_mat1);
-   show_result(ui->labelFocusImage2, work_done_result.focus_mat2);
+   show_result(ui->labelFocusImage1, work_done_result.roi_src_mat1);
+   show_result(ui->labelFocusImage2, work_done_result.roi_src_mat2);
 
    show_result(ui->labelFineImage1, work_done_result.focus_mat1);
    show_result(ui->labelFineImage2, work_done_result.focus_mat2);
 
-   cv::Mat mat1, mat2;
-   cv::applyColorMap(work_done_result.roi_src_mat1, mat1, cv::COLORMAP_JET);
-   cv::applyColorMap(work_done_result.roi_src_mat2, mat2, cv::COLORMAP_JET);
-   show_result(ui->labelQualityImage1, mat1);
-   show_result(ui->labelQualityImage2, mat2);
+   if(work_done_result.src_mat1.empty())
+   {
+       show_result(ui->labelQualityImage1, work_done_result.roi_src_mat1);
+       show_result(ui->labelQualityImage2, work_done_result.roi_src_mat2);
+   }
+   else{
+       cv::Mat mat1, mat2;
+       cv::applyColorMap(work_done_result.roi_src_mat1, mat1, cv::COLORMAP_JET);
+       cv::applyColorMap(work_done_result.roi_src_mat2, mat2, cv::COLORMAP_JET);
+       show_result(ui->labelQualityImage1, mat1);
+       show_result(ui->labelQualityImage2, mat2);
+   }
 }
 
 

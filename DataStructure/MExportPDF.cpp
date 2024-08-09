@@ -13,7 +13,6 @@ MExportPDF::MExportPDF(QObject *parent)
     page1 = HPDF_AddPage(pdf);
     // Set the page size to A4
     HPDF_Page_SetSize(page1, HPDF_PAGE_SIZE_A4, HPDF_PAGE_PORTRAIT);
-
     // Add a new page to the PDF document
     page2 = HPDF_AddPage(pdf);
     // Set the page size to A4

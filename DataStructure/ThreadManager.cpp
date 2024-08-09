@@ -54,6 +54,11 @@ void ThreadManager::run(){
         work_done_result.src_mat2 = recipe_param_.src_mat2_;
         work_done_result.coarse_mat1 = recipe_param_.src_mat1_;
         work_done_result.coarse_mat2 = recipe_param_.src_mat2_;
+
+        //cv::cvtColor(work_done_result.src_mat1, work_done_result.src_mat1, cv::COLOR_GRAY2BGR);
+        //cv::cvtColor(work_done_result.src_mat2, work_done_result.src_mat2, cv::COLOR_GRAY2BGR);
+        //cv::cvtColor(work_done_result.coarse_mat1, work_done_result.coarse_mat1, cv::COLOR_GRAY2BGR);
+        //cv::cvtColor(work_done_result.coarse_mat2, work_done_result.coarse_mat2, cv::COLOR_GRAY2BGR);
         //first widget
         //cv::Mat corase_mat1, coarse_mat2;
         for (const auto& roi : recipe_param_.selection_rois_) {
@@ -90,6 +95,11 @@ void ThreadManager::run(){
 
         //third widget
         cv::Point2d pt = MSystemInfo::Instance()->image_process_->getPhaseCorr(roi_src_mat1, roi_src_mat2);
+
+        cv::Mat translation_matrix = (cv::Mat_<double>(2, 3) << 1, 0, -pt.x, 0, 1, -pt.y);
+        cv::warpAffine(work_done_result.roi_src_mat2, work_done_result.roi_src_mat2, translation_matrix, work_done_result.roi_src_mat2.size());
+
+
         work_done_result.fine_pt = pt;
         if((std::fabs(pt.x ) - recipe_param_.fine_offset_x < 1e-9) && (std::fabs(pt.y ) - recipe_param_.fine_offset_y < 1e-9))
             emit send_work_status_to_optial_tool_dlg(3, true);
@@ -103,9 +113,7 @@ void ThreadManager::run(){
         work_done_result.ssim_mat = ssim_mat;
         cv::applyColorMap(work_done_result.roi_src_mat1, work_done_result.ssim_mat1, cv::COLORMAP_JET);
         cv::applyColorMap(work_done_result.roi_src_mat2, work_done_result.ssim_mat2, cv::COLORMAP_JET);
-        cv::applyColorMap(work_done_result.ssim_mat, work_done_result.ssim_mat, cv::COLORMAP_JET);
 
-       
         if(m_running.load() == true)
             send_work_done_to_image_process_widget(work_done_result);
 

@@ -52,6 +52,9 @@ OpticalToolDlg::OpticalToolDlg(QWidget *parent) :
     QObject::connect(thread_manager_.get(), &ThreadManager::send_work_done_to_image_process_widget, fine_location_widget_.get(),   &ImageProcessWidget::recv_work_done_from_thread_manager);
     QObject::connect(thread_manager_.get(), &ThreadManager::send_work_done_to_image_process_widget, quality_analysis_widget_.get(),&ImageProcessWidget::recv_work_done_from_thread_manager);
     QObject::connect(thread_manager_.get(), &ThreadManager::send_work_status_to_optial_tool_dlg, this,&OpticalToolDlg::recv_work_status_form_thread_manager);
+
+    setHalfScreenSize(); // 设置对话框大小为屏幕的一半
+    centerOnScreen(); // 将对话框居中显示
 }
 
 OpticalToolDlg::~OpticalToolDlg(){
@@ -115,7 +118,19 @@ void OpticalToolDlg::recv_work_status_form_thread_manager(int widget_index, bool
         else
             setLabelColor(ui->labelQualityAnalysis, Qt::red);
     }
-
-
 }
 
+void OpticalToolDlg::setHalfScreenSize() {
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int width = screenGeometry.width() / 2;
+    int height = screenGeometry.height() / 2;
+    resize(width, height);
+    //setFixedSize(width, height); // 设置对话框大小
+}
+
+void OpticalToolDlg::centerOnScreen() {
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width() - width()) / 2;
+    int y = (screenGeometry.height() - height()) / 2;
+    move(x, y); // 将对话框移动到屏幕中央
+}

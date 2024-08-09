@@ -12,19 +12,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Windows 特定配置
 win32 {
-    INCLUDEPATH += D:/codes/3dParty/MVS/Development/Includes
-    LIBS += D:/codes/3dParty/MVS/Development/Libraries/win64/MvCameraControl.lib
+    # 海康相机
+    3DPARTY_DIR = ../3dParty
+    INCLUDEPATH += $$3DPARTY_DIR/MVS/Development/Includes
+    LIBS += -L$$3DPARTY_DIR/MVS/Development/Libraries/win64 -lMvCameraControl
+
+
     CONFIG(debug, debug|release) {
-       INCLUDEPATH += D:/tools/opencv-4.10.0-windows/build/include
-       LIBS += D:/tools/opencv-4.10.0-windows/build/x64/vc16/lib/opencv_world4100d.lib
-       INCLUDEPATH += D:/codes/3dParty/libharu-2.4.4/Debug-x64/include
-       LIBS += D:/codes/3dParty/libharu-2.4.4/Debug-x64/lib/hpdf.lib
+        INCLUDEPATH += $$3DPARTY_DIR/opencv-4.10.0-windows/Debug-x64/include
+        INCLUDEPATH += $$3DPARTY_DIR/libharu-2.4.4/Debug-x64/include
+        INCLUDEPATH += $$3DPARTY_DIR/json-3.11.3/Debug-x64/include
+        LIBS += -L$$3DPARTY_DIR/opencv-4.10.0-windows/Debug-x64/x64/vc17/lib -lopencv_world4100d
+        LIBS += -L$$3DPARTY_DIR/libharu-2.4.4/Debug-x64/lib -lhpdf
     }
     else{
-        INCLUDEPATH += D:/tools/opencv-4.10.0-windows/build/include
-        LIBS += D:/tools/opencv-4.10.0-windows/build/x64/vc16/lib/opencv_world4100.lib
-        INCLUDEPATH += D:/codes/3dParty/libharu-2.4.4/Release-x64/include
-        LIBS += D:/codes/3dParty/libharu-2.4.4/Release-x64/lib/hpdf.lib
+        INCLUDEPATH += $$3DPARTY_DIR/opencv-4.10.0-windows/Debug-x64/include
+        INCLUDEPATH += $$3DPARTY_DIR/libharu-2.4.4/Release-x64/include
+        INCLUDEPATH += $$3DPARTY_DIR/json-3.11.3/Release-x64/include
+        LIBS += -L$$3DPARTY_DIR/opencv-4.10.0-windows/Release-x64/x64/vc17/lib -lopencv_world4100
+        LIBS += -L$$3DPARTY_DIR/libharu-2.4.4/Release-x64/lib -lhpdf
     }
 }
 

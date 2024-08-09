@@ -189,11 +189,11 @@ ConfigurationWidget::ConfigurationWidget(QWidget* parent) :
         else if (ui->comboBoxMode->currentText() == tr("A Image  -> B Image")) {
         }
     });
-    ui->lineEditFocusLengthDiff->setText(tr("50"));
+    ui->lineEditFocusLengthDiff->setText(tr("10"));
     ui->lineEditFineOffsetXTolerance->setText(tr("10"));
     ui->lineEditFineOffsetYTolerance->setText(tr("10"));
-    ui->lineEditSSIMMinTolerance->setText(tr("0.5"));
-    ui->lineEditSSIMMaxTolerance->setText(tr("0.8"));
+    ui->lineEditSSIMMinTolerance->setText(tr("0.8"));
+    ui->lineEditSSIMMaxTolerance->setText(tr("1.0"));
 }
 
 ConfigurationWidget::~ConfigurationWidget()

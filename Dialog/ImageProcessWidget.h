@@ -20,10 +20,12 @@ public:
     void process_quality_analysis(WorkDoneResult  work_done_result);
 public slots:
     void recv_work_done_from_thread_manager(const WorkDoneResult& work_done_result);
+    void update_image(int value);
 private:
     Ui::ImageProcessWidget *ui;
     std::unique_ptr<MImageProcess> image_process_;
     int id_;
+    int threshold_value;
 };
 
 #endif // IMAGEPROCESSWIDGET_H

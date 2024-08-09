@@ -18,6 +18,8 @@ class OpticalToolDlg : public QDialog{
 public:
     explicit OpticalToolDlg(QWidget *parent = nullptr);
     ~OpticalToolDlg();
+    void centerOnScreen();
+    void setHalfScreenSize();
     void setLabelColor(QLabel* label, const QColor& color);
 public slots:
     void change_tab_widget(int index);
